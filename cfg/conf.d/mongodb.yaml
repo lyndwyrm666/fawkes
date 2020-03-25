@@ -48,6 +48,11 @@ plugins/mongodb:
       hosts:
         - localhost:27022
 
+    statistics-local:
+      enabled: true
+      mode: connection
+      hostport: localhost:27019
+
   # The following defines the mongod instances you want
   # the mongodb plugin to run
   instances:
@@ -68,6 +73,16 @@ plugins/mongodb:
       data-path: /tmp/mongodb-local
       log:
         path: /tmp/mongodb-local.log
+        append: true
+
+    statistics-local:
+      enabled: false
+      termination-grace-period: 15
+      clear-data-on-termination: false
+      port: 27099
+      data-path: /tmp/mongodb-statistics-local
+      log:
+        path: /tmp/mongodb-statistics-local.log
         append: true
 
     rs0:
