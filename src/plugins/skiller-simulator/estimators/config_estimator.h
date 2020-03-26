@@ -30,8 +30,8 @@ class ConfigExecutionTimeEstimator : public ExecutionTimeEstimator
 {
 public:
 	ConfigExecutionTimeEstimator(Configuration *config);
-	float get_execution_time(const Skill &skill) const override;
-	bool  can_execute(const Skill &skill) const override;
+	float get_execution_time(const Skill &skill) override;
+	bool  can_execute(const Skill &skill) override;
 
 private:
 	Configuration *const  config_;

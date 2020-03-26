@@ -39,13 +39,13 @@ ConfigExecutionTimeEstimator::ConfigExecutionTimeEstimator(Configuration *config
 }
 
 bool
-ConfigExecutionTimeEstimator::can_execute(const Skill &skill) const
+ConfigExecutionTimeEstimator::can_execute(const Skill &skill)
 {
 	return config_->exists(cfg_prefix_ + skill.skill_name);
 }
 
 float
-ConfigExecutionTimeEstimator::get_execution_time(const Skill &skill) const
+ConfigExecutionTimeEstimator::get_execution_time(const Skill &skill)
 {
 	return config_->get_float(cfg_prefix_ + skill.skill_name);
 }
