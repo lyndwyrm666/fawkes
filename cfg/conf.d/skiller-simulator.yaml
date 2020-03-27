@@ -6,6 +6,16 @@ plugins/skiller-simulator:
     default: 1
     say: 2.5
   estimators:
+    lookup:
+      # if true, lookup all skills except the ones listed in 'skills'
+      # else only lookup the ones in 'skills'
+      try-by-default: true
+      skills:
+        - goto
+      database: "skills"
+      collection: "exec_times"
+      skill-field: "name"
+      duration-field: "duration"
     navgraph:
       speed: 0.5
       skills:
