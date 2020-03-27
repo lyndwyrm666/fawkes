@@ -43,14 +43,14 @@ NavGraphEstimator::NavGraphEstimator(LockPtr<NavGraph> navgraph, Configuration *
 }
 
 bool
-NavGraphEstimator::can_execute(const Skill &skill) const
+NavGraphEstimator::can_execute(const Skill &skill)
 {
 	return std::find(skills_.begin(), skills_.end(), skill.skill_name) != skills_.end()
 	       && navgraph_->node_exists(skill.skill_args.at("place"));
 }
 
 float
-NavGraphEstimator::get_execution_time(const Skill &skill) const
+NavGraphEstimator::get_execution_time(const Skill &skill)
 {
 	return navgraph_->node(skill.skill_args.at("place")).distance(last_pose_x_, last_pose_y_)
 	       / speed_;
