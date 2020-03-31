@@ -29,6 +29,8 @@
 #include <fnmatch.h>
 #include <mongocxx/client.hpp>
 #include <mongocxx/exception/operation_exception.hpp>
+#include <sstream>
+#include <thread>
 
 using namespace mongocxx;
 using namespace fawkes;
@@ -400,6 +402,10 @@ MongoLogBlackboardThread::InterfaceListener::bb_interface_data_changed(Interface
 			}
 		}
 
+		std::ostringstream ss;
+		ss << std::this_thread::get_id();
+		std::string idstr = ss.str();
+		document.append(basic::kvp("thread", idstr));
 		mongodb_->database(database_)[collection_].insert_one(document.view());
 	} catch (operation_exception &e) {
 		logger_->log_warn(
