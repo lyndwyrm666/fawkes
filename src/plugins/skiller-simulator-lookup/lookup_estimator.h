@@ -42,9 +42,10 @@ public:
 	LookupEstimator(MongoDBConnCreator *mongo_connection_manager,
 	                Configuration *     config,
 	                Logger *            logger);
-	float get_execution_time(const Skill &skill) override;
-	bool  can_execute(const Skill &skill) override;
-	void  execute(const Skill &skill) override;
+	float                             get_execution_time(const Skill &skill) override;
+	bool                              can_execute(const Skill &skill) override;
+	SkillerInterface::SkillStatusEnum execute(const Skill &skill,
+	                                          std::string &error_feedback) override;
 
 private:
 	void init();
@@ -66,6 +67,9 @@ private:
 	std::string collection_;
 	std::string skill_name_field_;
 	std::string duration_field_;
+
+	std::string                       error_;
+	SkillerInterface::SkillStatusEnum outcome_;
 };
 } // namespace skiller_simulator
 } // namespace fawkes
