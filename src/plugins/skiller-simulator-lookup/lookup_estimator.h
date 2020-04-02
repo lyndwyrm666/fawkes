@@ -63,6 +63,7 @@ private:
 
 	bool try_by_default_;
 	bool match_args_;
+	bool include_failures_;
 
 	std::string database_;
 	std::string collection_;
